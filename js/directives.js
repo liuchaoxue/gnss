@@ -1,39 +1,39 @@
 /***
-GLobal Directives
-***/
+ GLobal Directives
+ ***/
 
 // Route State Load Spinner(used on page or content load)
 MetronicApp.directive('ngSpinnerBar', ['$rootScope', '$state',
-    function($rootScope, $state) {
+    function ($rootScope, $state) {
         return {
-            link: function(scope, element, attrs) {
+            link: function (scope, element, attrs) {
                 // by defult hide the spinner bar
                 element.addClass('hide'); // hide spinner bar by default
 
                 // display the spinner bar whenever the route changes(the content part started loading)
-                $rootScope.$on('$stateChangeStart', function() {
+                $rootScope.$on('$stateChangeStart', function () {
                     element.removeClass('hide'); // show spinner bar
                 });
 
                 // hide the spinner bar on rounte change success(after the content loaded)
-                $rootScope.$on('$stateChangeSuccess', function(event) {
+                $rootScope.$on('$stateChangeSuccess', function (event) {
                     element.addClass('hide'); // hide spinner bar
                     $('body').removeClass('page-on-load'); // remove page loading indicator
                     Layout.setAngularJsSidebarMenuActiveLink('match', null, event.currentScope.$state); // activate selected link in the sidebar menu
-                   
+
                     // auto scorll to page top
                     setTimeout(function () {
                         App.scrollTop(); // scroll to the top on content load
-                    }, $rootScope.settings.layout.pageAutoScrollOnLoad);     
+                    }, $rootScope.settings.layout.pageAutoScrollOnLoad);
                 });
 
                 // handle errors
-                $rootScope.$on('$stateNotFound', function() {
+                $rootScope.$on('$stateNotFound', function () {
                     element.addClass('hide'); // hide spinner bar
                 });
 
                 // handle errors
-                $rootScope.$on('$stateChangeError', function() {
+                $rootScope.$on('$stateChangeError', function () {
                     element.addClass('hide'); // hide spinner bar
                 });
             }
@@ -42,12 +42,12 @@ MetronicApp.directive('ngSpinnerBar', ['$rootScope', '$state',
 ])
 
 // Handle global LINK click
-MetronicApp.directive('a', function() {
+MetronicApp.directive('a', function () {
     return {
         restrict: 'E',
-        link: function(scope, elem, attrs) {
+        link: function (scope, elem, attrs) {
             if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
-                elem.on('click', function(e) {
+                elem.on('click', function (e) {
                     e.preventDefault(); // prevent link click for above criteria
                 });
             }
@@ -57,9 +57,44 @@ MetronicApp.directive('a', function() {
 
 // Handle Dropdown Hover Plugin Integration
 MetronicApp.directive('dropdownMenuHover', function () {
-  return {
-    link: function (scope, elem) {
-      elem.dropdownHover();
-    }
-  };  
+    return {
+        link: function (scope, elem) {
+            elem.dropdownHover();
+        }
+    };
+});
+
+MetronicApp.directive('charts', function () {
+    return {
+        restrict: 'E',
+        link: function (scope, elem, attrs) {
+
+            var chart = null,
+                options = {
+                    xaxis: {
+                        ticks: [[0, 'Daft'], [1, 'Punk']]
+                    },
+                    grid: {
+                        labelMargin: 10,
+                        backgroundColor: '#e2e6e9',
+                        color: '#ffffff',
+                        borderColor: null
+                    }
+                };
+
+            var data = scope[attrs.ngModel];
+
+            // If the data changes somehow, update it in the chart
+            scope.$watch('data', function (v) {
+                if (!chart) {
+                    chart = $.plot(elem, v, options);
+                    elem.show();
+                } else {
+                    chart.setData(v);
+                    chart.setupGrid();
+                    chart.draw();
+                }
+            });
+        }
+    };
 });
