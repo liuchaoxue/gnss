@@ -24,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.078125">
-              <caret line="151" column="98" selection-start-line="151" selection-start-column="98" selection-end-line="151" selection-end-column="98" />
+            <state vertical-scroll-proportion="-6.875">
+              <caret line="147" column="56" selection-start-line="147" selection-start-column="56" selection-end-line="147" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -34,28 +34,85 @@
       <file leaf-file-name="dashboardController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.692429">
-              <caret line="150" column="22" selection-start-line="150" selection-start-column="14" selection-end-line="150" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.022421524">
+              <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directives.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/directives.js">
+      <file leaf-file-name="charts-flotcharts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-flotcharts.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <caret line="800" column="24" selection-start-line="800" selection-start-column="24" selection-end-line="800" selection-end-column="24" />
+              <folding>
+                <marker date="1478748017461" expanded="true" signature="22248:22304" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="23250:23306" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="24252:24308" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="25309:25365" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="26362:26418" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="27796:27852" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="28751:28807" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="charts-flotcharts.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-flotcharts.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="308" column="65" selection-start-line="308" selection-start-column="65" selection-end-line="308" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
+      <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.25">
+              <caret line="150" column="40" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="40" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="amcharts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/global/plugins/amcharts/amcharts/amcharts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.457143">
+              <caret line="129" column="133" selection-start-line="129" selection-start-column="133" selection-end-line="129" selection-end-column="133" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="charts-amcharts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-amcharts.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <caret line="752" column="0" selection-start-line="752" selection-start-column="0" selection-end-line="829" selection-end-column="5" />
+              <folding>
+                <marker date="1478748017461" expanded="true" signature="1631:1646" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="1973:1988" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="15465:15480" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="15740:15755" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="22969:22983" placeholder="..." />
+                <marker date="1478748017461" expanded="true" signature="74773:74788" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tpl/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.875">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -77,12 +134,14 @@
         <option value="$PROJECT_DIR$/assets/global/plugins/flot/jquery.flot.min.js" />
         <option value="$PROJECT_DIR$/views/charts_flotcharts.html" />
         <option value="$PROJECT_DIR$/assets/pages/scripts/charts-flotcharts.min.js" />
-        <option value="$PROJECT_DIR$/views/dashboard.html" />
         <option value="$PROJECT_DIR$/tpl/header.html" />
         <option value="$PROJECT_DIR$/js/controllers/DashboardController.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/directives.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/assets/pages/scripts/charts-amcharts.min.js" />
+        <option value="$PROJECT_DIR$/assets/global/plugins/amcharts/amcharts/amcharts.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/views/dashboard.html" />
         <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
       </list>
     </option>
@@ -190,6 +249,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gnss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gnss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -217,7 +290,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test/2048" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../metronic_v4.7.1" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
@@ -394,7 +467,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -413,17 +486,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.078125">
-          <caret line="151" column="98" selection-start-line="151" selection-start-column="98" selection-end-line="151" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/directives.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.8206278">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
@@ -431,16 +496,97 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-0.7040359">
           <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-amcharts.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="524" column="19" selection-start-line="524" selection-start-column="12" selection-end-line="524" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-amcharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="752" column="0" selection-start-line="752" selection-start-column="0" selection-end-line="829" selection-end-column="5" />
+          <folding>
+            <marker date="1478748017461" expanded="true" signature="1631:1646" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="1973:1988" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="15465:15480" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="15740:15755" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="22969:22983" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="74773:74788" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/global/plugins/amcharts/amcharts/amcharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.457143">
+          <caret line="129" column="133" selection-start-line="129" selection-start-column="133" selection-end-line="129" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="147" column="56" selection-start-line="147" selection-start-column="56" selection-end-line="147" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.25">
+          <caret line="150" column="40" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-flotcharts.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="308" column="65" selection-start-line="308" selection-start-column="65" selection-end-line="308" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/pages/scripts/charts-flotcharts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="800" column="24" selection-start-line="800" selection-start-column="24" selection-end-line="800" selection-end-column="24" />
+          <folding>
+            <marker date="1478748017461" expanded="true" signature="22248:22304" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="23250:23306" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="24252:24308" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="25309:25365" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="26362:26418" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="27796:27852" placeholder="..." />
+            <marker date="1478748017461" expanded="true" signature="28751:28807" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.692429">
-          <caret line="150" column="22" selection-start-line="150" selection-start-column="14" selection-end-line="150" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.022421524">
+          <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
           <folding />
         </state>
       </provider>

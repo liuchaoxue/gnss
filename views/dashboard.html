@@ -8,7 +8,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-counter="counterup" data-value="29">{{satelliteData.compassSatellite}}</span>
+                    <span data-counter="counterup" data-value="29" data-ng-bind="satelliteData.compassSatellite"></span>
                 </div>
                 <div class="desc"> 北斗卫星</div>
             </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-counter="counterup" data-value="23">{{satelliteData.gpsSatellite}}</span>
+                    <span data-counter="counterup" data-value="23"data-ng-bind="satelliteData.gpsSatellite"></span>
                 </div>
                 <div class="desc"> GPS卫星</div>
             </div>
@@ -90,6 +90,17 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject font-dark sbold uppercase">绝对误差</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="absoluteError" class="chart"></div>
+            </div>
+        </div>
+        <div class="portlet light portlet-fit ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-settings font-dark"></i>
                     <span class="caption-subject font-dark sbold uppercase">定位精度</span>
                 </div>
             </div>
@@ -97,6 +108,51 @@
                 <div id="chartPositionPrecision" class="chart"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="portlet light portlet-fit ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-settings font-dark"></i>
+                            <span class="caption-subject font-dark sbold uppercase">保护水平</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="protectionLevel" class="chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="portlet light portlet-fit ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-settings font-dark"></i>
+                            <span class="caption-subject font-dark sbold uppercase">UTC连续性</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="utcContinuity" class="chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- BEGIN CHART PORTLET-->
+                <div class="portlet light ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-green-haze"></i>
+                            <span class="caption-subject bold uppercase font-green-haze">星空图</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="starMap" class="chart" style="height: 400px;"> </div>
+                    </div>
+                </div>
+                <!-- END CHART PORTLET-->
+            </div>
 
     </div>
 </div>

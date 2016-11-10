@@ -5,7 +5,7 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
     });
 
     function randNum() {
-        return (Math.floor(Math.random() * (1 + 40 - 20)))+5;
+        return (Math.floor(Math.random() * (1 + 40 - 20))) + 5;
     }
 
     function testData() {
@@ -19,13 +19,22 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
             [7, randNum()],
             [8, randNum()],
             [9, randNum()],
-            [10,  randNum()],
-            [11,  randNum()],
-            [12,  randNum()],
+            [10, randNum()],
+            [11, randNum()],
+            [12, randNum()],
         ];
     }
 
-    function chart(data, chartId, name) {
+    function mockup_data() {
+        return {
+            compassSatellite: 29,
+            gpsSatellite: 23,
+            glsSatellite: 12
+        }
+
+    }
+
+    function chart(data, chartId, name,shadowColor) {
         if ($('#' + chartId).size() != 1) {
             return;
         }
@@ -37,7 +46,6 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                 lineWidth: 1,
             },
             shadowSize: 0
-
         }], {
             series: {
                 lines: {
@@ -66,7 +74,7 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                 borderColor: "#eee",
                 borderWidth: 1
             },
-            colors: ["#37b7f3", "#37b7f3", "#52e136"],
+            colors: [shadowColor],
             xaxis: {
                 ticks: 11,
                 tickDecimals: 0,
@@ -100,8 +108,7 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
             }
         });
     }
-
-
+    
     function showTooltip(x, y, contents) {
         $('<div id="tooltip">' + contents + '</div>').css({
             position: 'absolute',
@@ -117,22 +124,17 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
         }).appendTo("body").fadeIn(200);
     }
 
-
-    function mockup_data() {
-        return {
-            compassSatellite: 29 + randNum(),
-            gpsSatellite: 23 + randNum(),
-            glsSatellite: 12 + randNum()
-        }
-
-    }
-
     function dataHook(data) {
         $scope.satelliteData = data;
-        chart(testData(), "chartSatelliteNum", "卫星数量")
-        chart(testData(), "chartPod", "pod")
-        chart(testData(), "chartPositionPrecision", "精确度")
+        chart(testData(), "chartSatelliteNum", "卫星数量","#ed0404")
+        chart(testData(), "chartPod", "pod","#38b7f3")
+        chart(testData(), "chartPositionPrecision", "精确度","#26069b")
+        chart(testData(), "protectionLevel", "保护水平","#52e136")
+        chart(testData(), "utcContinuity", "UTC连续性","#d1048c")
+        chart(testData(), "absoluteError", "绝对误差","#454f00")
     }
+
+
 
     function showTime() {
         var date = new Date();
@@ -149,9 +151,9 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
     }, 1000)
 
     $interval(showTime, 1000)
+
+    showTime()
+
     dataHook(mockup_data());
-// set sidebar closed and body solid layout mode
-    $rootScope.settings.layout.pageContentWhite = true;
-    $rootScope.settings.layout.pageBodySolid = false;
-    $rootScope.settings.layout.pageSidebarClosed = false;
+
 });
