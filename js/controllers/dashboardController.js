@@ -148,8 +148,7 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
         dataHook(mockup_data());
     }, 1000)
 
-    showTime()
-    $interval(showTime, 60000)
+    $interval(showTime, 1000)
     dataHook(mockup_data());
 // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageContentWhite = true;
