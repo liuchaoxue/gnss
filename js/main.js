@@ -111,7 +111,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             url: "/dashboard.html",
             templateUrl: "views/dashboard.html",            
             data: {pageTitle: 'Admin Dashboard Template'},
-            controller: "DashboardController",
+            controller: "dashboardController",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -124,7 +124,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             'assets/global/plugins/jquery.sparkline.min.js',
 
                             'assets/pages/scripts/dashboard.min.js',
-                            'js/controllers/DashboardController.js',
+                            'js/controllers/dashboardController.js',
                         ] 
                     });
                 }]
