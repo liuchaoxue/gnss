@@ -10,18 +10,18 @@ angular.module('MetronicApp').controller('DashboardController', function ($inter
 
     function testData() {
         return [
-            [1, randValue()],
-            [2, randValue()],
-            [3, 2 + randValue()],
-            [4, 3 + randValue()],
-            [5, 5 + randValue()],
-            [6, 10 + randValue()],
-            [7, randValue()],
-            [8, 20 + randValue()],
-            [9, 11 + randValue()],
-            [10, 20 + randValue()],
-            [11, 15 + randValue()],
-            [12, 25 + randValue()],
+            [1, randNum()],
+            [2, randNum()],
+            [3, 2 + randNum()],
+            [4, 3 + randNum()],
+            [5, 5 + randNum()],
+            [6, 10 + randNum()],
+            [7, randNum()],
+            [8, 20 + randNum()],
+            [9, 11 + randNum()],
+            [10, 20 + randNum()],
+            [11, 15 + randNum()],
+            [12, 25 + randNum()],
         ];
     }
 
@@ -121,16 +121,15 @@ angular.module('MetronicApp').controller('DashboardController', function ($inter
 
     function mockup_data() {
         return {
-            compassSatellite: 29 + randValue(),
-            gpsSatellite: 23 + randValue(),
-            glsSatellite: 12 + randValue()
+            compassSatellite: 29 + randNum(),
+            gpsSatellite: 23 + randNum(),
+            glsSatellite: 12 + randNum()
         }
 
     }
 
     function dataHook(data) {
-        $scope.satelliteData = data;
-        console.log($scope.satelliteData)
+        $scope.satelliteData = data;    
         chart(testData(), "chartSatelliteNum", "卫星数量")
         chart(testData(), "chartPod", "pod")
         chart(testData(), "chartPositionPrecision", "精确度")
