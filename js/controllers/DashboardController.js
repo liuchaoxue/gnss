@@ -5,23 +5,23 @@ angular.module('MetronicApp').controller('DashboardController', function ($inter
     });
 
     function randNum() {
-        return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
+        return (Math.floor(Math.random() * (1 + 40 - 20)))+5;
     }
 
     function testData() {
         return [
             [1, randNum()],
             [2, randNum()],
-            [3, 2 + randNum()],
-            [4, 3 + randNum()],
-            [5, 5 + randNum()],
-            [6, 10 + randNum()],
+            [3, randNum()],
+            [4, randNum()],
+            [5, randNum()],
+            [6, randNum()],
             [7, randNum()],
-            [8, 20 + randNum()],
-            [9, 11 + randNum()],
-            [10, 20 + randNum()],
-            [11, 15 + randNum()],
-            [12, 25 + randNum()],
+            [8, randNum()],
+            [9, randNum()],
+            [10,  randNum()],
+            [11,  randNum()],
+            [12,  randNum()],
         ];
     }
 
@@ -79,7 +79,6 @@ angular.module('MetronicApp').controller('DashboardController', function ($inter
             }
         });
 
-
         var previousPoint = null;
         $("#" + chartId).bind("plothover", function (event, pos, item) {
             $("#x").text(pos.x.toFixed(2));
@@ -129,7 +128,7 @@ angular.module('MetronicApp').controller('DashboardController', function ($inter
     }
 
     function dataHook(data) {
-        $scope.satelliteData = data;    
+        $scope.satelliteData = data;
         chart(testData(), "chartSatelliteNum", "卫星数量")
         chart(testData(), "chartPod", "pod")
         chart(testData(), "chartPositionPrecision", "精确度")
@@ -150,7 +149,7 @@ angular.module('MetronicApp').controller('DashboardController', function ($inter
     }, 1000)
 
     showTime()
-    //$interval(showTime, 60000)
+    $interval(showTime, 60000)
     dataHook(mockup_data());
 // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageContentWhite = true;
