@@ -144,11 +144,10 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
             initCharts: function (Data) {
 
                 $scope.satelliteData = {
-                    compassSatellite: 19,
-                    gpsSatellite: 20,
-                    glsSatellite: 32
+                    compassSatellite: 29,
+                    gpsSatellite: 23,
+                    glsSatellite: 12
                 };
-
                 var visitors = [
                     ['02/2013', Data[0]],
                     ['03/2013', Data[9]],
