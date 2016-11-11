@@ -54,6 +54,11 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope
         //App.initComponents(); // init core components
         //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive 
     });
+
+    $scope.$on('to-parent', function(event,data) {
+        //console.log('ParentCtrl', data);
+        $scope.$broadcast('to-child', data);
+    });
 }]);
 
 /***
@@ -67,6 +72,22 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
     $scope.$on('$includeContentLoaded', function() {
         Layout.initHeader(); // init header
     });
+
+    $scope.base_station = localStorage.getItem('base_station');
+
+    $scope.change_base_station = function (){
+        localStorage.setItem('base_station','北京')
+        $scope.base_station = '北京';
+
+        var socket = io.connect('http://192.168.1.30:3000');
+        socket.on('new', function (data) {
+            console.log('-------------------------------')
+            $scope.$emit('to-parent', data);
+        });
+
+        //var data = [21,34,52,43,34,23,45,60,27,52,41,36];
+
+    }
 }]);
 
 /* Setup Layout Part - Sidebar */

@@ -1,5 +1,5 @@
 <h1 class="page-title"> 北斗卫星 数据面板 </h1>
-
+<p ng-bind="shishi"></p>
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
@@ -21,7 +21,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-counter="counterup" data-value="23"data-ng-bind="satelliteData.gpsSatellite"></span>
+                    <span data-counter="counterup" data-value="23" data-ng-bind="satelliteData.gpsSatellite"></span>
                 </div>
                 <div class="desc"> GPS卫星</div>
             </div>
@@ -59,31 +59,58 @@
     <div class="col-md-12">
         <!-- BEGIN BASIC CHART PORTLET-->
         <div class="row">
-            <div class="col-md-6">
-                <div class="portlet light portlet-fit ">
+            <div class="col-lg-6 col-xs-12 col-sm-12">
+                <!-- BEGIN PORTLET-->
+                <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="icon-settings font-dark"></i>
-                            <span class="caption-subject font-dark sbold uppercase">卫星数量</span>
+                            <i class="icon-bar-chart font-dark hide"></i>
+                            <span class="caption-subject font-dark bold uppercase">卫星数量</span>
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="chartSatelliteNum" class="chart"></div>
+                        <div id="site_statistics_loading">
+                            <img src="assets/global/img/loading.gif" alt="loading"/></div>
+                        <div id="site_statistics_content" class="display-none">
+                            <div id="site_statistics" class="chart"></div>
+                        </div>
                     </div>
                 </div>
+                <!-- END PORTLET-->
             </div>
-            <div class="col-md-6">
-                <div class="portlet light portlet-fit ">
+            <div class="col-lg-6 col-xs-12 col-sm-12">
+                <!-- BEGIN PORTLET-->
+                <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="icon-settings font-dark"></i>
-                            <span class="caption-subject font-dark sbold uppercase">pod值</span>
+                            <i class="icon-share font-red-sunglo hide"></i>
+                            <span class="caption-subject font-dark bold uppercase">DOP值</span>
+                            <span class="caption-helper">这是什么...</span>
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="chartPod" class="chart"></div>
+                        <div id="site_activities_loading">
+                            <img src="assets/global/img/loading.gif" alt="loading"/></div>
+                        <div id="site_activities_content" class="display-none">
+                            <div id="site_activities" style="height: 228px;"></div>
+                        </div>
+                        <div style="margin: 20px 0 10px 30px">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                                    <span class="label label-sm label-success"> HDOP </span>
+
+                                    <h3>1.4</h3>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
+                                    <span class="label label-sm label-info"> VDOP </span>
+
+                                    <h3>2.8</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- END PORTLET-->
             </div>
         </div>
         <div class="portlet light portlet-fit ">
@@ -136,7 +163,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6">
                 <!-- BEGIN CHART PORTLET-->
@@ -148,11 +174,13 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <div id="starMap" class="chart" style="height: 400px;"> </div>
+                        <div id="starMap" class="chart" style="height: 400px;"></div>
                     </div>
                 </div>
                 <!-- END CHART PORTLET-->
             </div>
+
+        </div>
 
     </div>
 </div>

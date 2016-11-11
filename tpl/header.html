@@ -11,12 +11,12 @@
         <div class="page-actions">
             <div class="btn-group">
                 <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
-                    <span class="hidden-sm hidden-xs">基站&nbsp;</span>&nbsp;
+                    <span class="hidden-sm hidden-xs" ng-bind="base_station">&nbsp;</span>&nbsp;
                     <i class="fa fa-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="javascript:;">
+                        <a href="javascript:;" ng-click="change_base_station()">
                             <i class="icon-flag"></i> 北京 </a>
                     </li>
                     <li>
