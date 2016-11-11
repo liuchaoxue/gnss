@@ -35,9 +35,9 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
             initCharts: function (Data) {
 
                 $scope.satelliteData = {
-                    compassSatellite: Data[2],
-                    gpsSatellite: Data[5],
-                    glsSatellite: Data[7]
+                    compassSatellite: 29,
+                    gpsSatellite: 23,
+                    glsSatellite: 12
                 };
 
                 if (!jQuery.plot) {
@@ -76,9 +76,6 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                     return res;
                 }
 
-                //function randValue() {
-                //    return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
-                //}
 
                 var visitors = [
                     ['02/2013', Data[0]],

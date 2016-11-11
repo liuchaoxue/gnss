@@ -16,31 +16,31 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="javascript:;" ng-click="change_base_station()">
+                        <a name="beijing" href="javascript:;" ng-click="change_base_station('beijing')">
                             <i class="icon-flag"></i> 北京 </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a name="shanghai" href="javascript:;" ng-click="change_base_station('shanghai')">
                             <i class="icon-flag"></i> 上海 </a>
                     </li>
                 </ul>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-circle btn-outline blue dropdown-toggle" data-toggle="dropdown">
-                    <span class="hidden-sm hidden-xs">信号类型&nbsp;</span>&nbsp;
+                    <span class="hidden-sm hidden-xs" ng-bind="signal_type">&nbsp;</span>&nbsp;
                     <i class="fa fa-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="javascript:;">
+                        <a name="BDS" href="javascript:;" ng-click="change_signal_type('BDS')">
                             <i class="icon-docs"></i> BDS </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a name="GPS" href="javascript:;" ng-click="change_signal_type('GPS')">
                             <i class="icon-tag"></i> GPS </a>
                     </li>
                     <li>
-                        <a href="javascript:;">
+                        <a name="GLO" href="javascript:;" ng-click="change_signal_type('GLO')">
                             <i class="icon-share"></i> GLO </a>
                     </li>
                 </ul>
