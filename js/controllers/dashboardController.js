@@ -282,6 +282,59 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
     }();
 
 
+    anychart.onDocumentReady(function() {
+        var dataSet = anychart.data.set([
+            [180, 6],
+            [195, 3],
+            [210, 6],
+            [225, 6],
+            [240, 6],
+            [255, 5],
+            [270, 4],
+            [285, 10],
+            [300, 4],
+            [315, 8],
+            [330, 5],
+            [345, 6],
+            [360, 3]
+        ]);
+
+        // map data for the first series, take x from the zero column and value from the first column of data set
+        var seriesData_1 = dataSet.mapAs({x: [0], value: [1]});
+
+        chart = anychart.polar();
+
+        // set container id for the chart
+        chart.container('starMap');
+
+        // set chart yScale settings
+        chart.yScale().minimum(0).maximum(16);
+        chart.yScale().ticks().interval(2);
+
+        // set chart xScale settings
+        chart.xScale().maximum(360);
+        chart.xScale().ticks().interval(30);
+
+        // set xAxis formatting settings
+        chart.xAxis().labels().textFormatter(function() {
+            return this['value'] + '°'
+        });
+
+        // disable chart title
+        chart.title(false);
+
+        // set chart legend settings
+        chart.legend()
+            .align('center')
+            .enabled(true);
+
+        var series1 = chart.marker(seriesData_1);
+        series1.type('star5');
+        series1.name('Signal A');
+        chart.draw();
+    });
+
+
 // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageContentWhite = true;
     $rootScope.settings.layout.pageBodySolid = false;
