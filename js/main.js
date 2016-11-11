@@ -74,16 +74,25 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
     });
 
     $scope.base_station = localStorage.getItem('base_station');
+    $scope.signal_type = localStorage.getItem('signal_type');
 
-    $scope.change_base_station = function (){
-        localStorage.setItem('base_station','北京')
-        $scope.base_station = '北京';
+    $scope.change_base_station = function (name){
+        var base_station = document.getElementsByName(name);
+        localStorage.setItem('base_station',base_station[0].lastChild.data)
+        $scope.base_station = base_station[0].lastChild.data;
 
         var socket = io.connect('http://192.168.1.30:3000');
         socket.on('new', function (data) {
             $scope.$emit('to-parent', data);
         });
+    }
 
+    $scope.change_signal_type = function (name) {
+        var signal_type = document.getElementsByName(name);
+        localStorage.setItem('signal_type',signal_type[0].lastChild.data)
+        $scope.signal_type = signal_type[0].lastChild.data;
+
+        //$scope.$emit('to-parent', data);
     }
 }]);
 

@@ -113,26 +113,44 @@
                 <!-- END PORTLET-->
             </div>
         </div>
-        <div class="portlet light portlet-fit ">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-settings font-dark"></i>
-                    <span class="caption-subject font-dark sbold uppercase">绝对误差</span>
+        <div class="row">
+            <div class="col-lg-6 col-xs-12 col-sm-12">
+                <!-- BEGIN PORTLET-->
+                <div class="portlet light ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-bar-chart font-dark hide"></i>
+                            <span class="caption-subject font-dark bold uppercase">绝对误差</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="absoluteError_loading">
+                            <img src="assets/global/img/loading.gif" alt="loading"></div>
+                        <div id="absoluteError_content" class="display-none">
+                            <div id="absoluteError" class="chart"></div>
+                        </div>
+                    </div>
                 </div>
+                <!-- END PORTLET-->
             </div>
-            <div class="portlet-body">
-                <div id="absoluteError" class="chart"></div>
-            </div>
-        </div>
-        <div class="portlet light portlet-fit ">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-settings font-dark"></i>
-                    <span class="caption-subject font-dark sbold uppercase">定位精度</span>
+            <div class="col-lg-6 col-xs-12 col-sm-12">
+                <!-- BEGIN PORTLET-->
+                <div class="portlet light ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-share font-red-sunglo hide"></i>
+                            <span class="caption-subject font-dark bold uppercase">定位精度</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="chartPositionPrecision_loading">
+                            <img src="assets/global/img/loading.gif" alt="loading"/></div>
+                        <div id="chartPositionPrecision_content" class="display-none">
+                            <div id="chartPositionPrecision" class="chart"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portlet-body">
-                <div id="chartPositionPrecision" class="chart"></div>
+                <!-- END PORTLET-->
             </div>
         </div>
         <div class="row">
@@ -144,7 +162,9 @@
                             <span class="caption-subject font-dark sbold uppercase">保护水平</span>
                         </div>
                     </div>
-                    <div class="portlet-body">
+                    <div id="protectionLevel_loading">
+                        <img src="assets/global/img/loading.gif" alt="loading"/></div>
+                    <div id="protectionLevel_content" class="display-none">
                         <div id="protectionLevel" class="chart"></div>
                     </div>
                 </div>
@@ -157,7 +177,9 @@
                             <span class="caption-subject font-dark sbold uppercase">UTC连续性</span>
                         </div>
                     </div>
-                    <div class="portlet-body">
+                    <div id="utcContinuity_loading">
+                        <img src="assets/global/img/loading.gif" alt="loading"/></div>
+                    <div id="utcContinuity_content" class="display-none">
                         <div id="utcContinuity" class="chart"></div>
                     </div>
                 </div>
@@ -173,8 +195,8 @@
                             <span class="caption-subject bold uppercase font-green-haze">星空图</span>
                         </div>
                     </div>
-                    <div class="portlet-body">
-                        <div id="starMap" class="chart" style="height: 400px;"></div>
+                    <div id="starMap_loading">
+                        <div id="starMap" class="chart"></div>
                     </div>
                 </div>
                 <!-- END CHART PORTLET-->

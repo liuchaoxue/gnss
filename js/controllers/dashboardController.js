@@ -4,14 +4,8 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
         App.initAjax();
     });
 
-
     var socket = io.connect('http://192.168.1.30:3000');
     socket.on('new', function (data) {
-        DopChart.initCharts(data);
-    });
-
-
-    $scope.$on('to-child', function (event, data) {
         DopChart.initCharts(data);
     });
 
@@ -25,8 +19,123 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
         $scope.nowTime = now
     }
 
-    $interval(showTime, 1000)
+    function showChartTooltip(x, y, xValue, yValue) {
+        $('<div id="tooltip" class="chart-tooltip">' + yValue + '<\/div>').css({
+            position: 'absolute',
+            display: 'none',
+            top: y - 40,
+            left: x - 40,
+            border: '0px solid #ccc',
+            padding: '2px 6px',
+            'background-color': '#fff'
+        }).appendTo("body").fadeIn(200);
+    }
 
+    function starMap(data) {
+        anychart.onDocumentReady(function () {
+            var dataSet = anychart.data.set(data);
+            var seriesData_1 = dataSet.mapAs({x: [0], value: [1]});
+            chart = anychart.polar();
+            chart.container('starMap');
+            chart.yScale().minimum(0).maximum(16);
+            chart.yScale().ticks().interval(2);
+            chart.xScale().maximum(360);
+            chart.xScale().ticks().interval(30);
+            chart.xAxis().labels().textFormatter(function () {
+                return this['value'] + '°'
+            });
+            var series1 = chart.marker(seriesData_1);
+            chart.draw();
+        });
+    }
+
+    function lineChart(chartId, data, color) {
+        if (!jQuery.plot) return;
+        if ($('#' + chartId).size() != 0) {
+            var previousPoint2 = null;
+            $('#' + chartId + '_loading').hide();
+            $('#' + chartId + '_content').show();
+            $.plot($("#" + chartId),
+                [{
+                    data: data,
+                    lines: {
+                        fill: 0.2,
+                        lineWidth: 0,
+                    },
+                    color: [color]
+                }, {
+                    data: data,
+                    points: {
+                        show: true,
+                        radius: 4,
+                        fillColor: color,
+                        lineWidth: 2
+                    },
+                    color: color,
+                    shadowSize: 1
+                }, {
+                    data: data,
+                    lines: {
+                        show: true,
+                        fill: false,
+                        lineWidth: 3
+                    },
+                    color: color,
+                    shadowSize: 0
+                }],
+
+                {
+
+                    xaxis: {
+                        tickLength: 0,
+                        tickDecimals: 0,
+                        mode: "categories",
+                        min: 0,
+                        font: {
+                            lineHeight: 18,
+                            style: "normal",
+                            variant: "small-caps",
+                            color: "#6F7B8A"
+                        }
+                    },
+                    yaxis: {
+                        ticks: 5,
+                        tickDecimals: 0,
+                        tickColor: "#eee",
+                        font: {
+                            lineHeight: 14,
+                            style: "normal",
+                            variant: "small-caps",
+                            color: "#6F7B8A"
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+                        tickColor: "#eee",
+                        borderColor: "#eee",
+                        borderWidth: 1
+                    }
+                });
+
+            $("#" + chartId).bind("plothover", function (event, pos, item) {
+                $("#x").text(pos.x.toFixed(2));
+                $("#y").text(pos.y.toFixed(2));
+                if (item) {
+                    if (previousPoint2 != item.dataIndex) {
+                        previousPoint2 = item.dataIndex;
+                        $("#tooltip").remove();
+                        var x = item.datapoint[0].toFixed(2),
+                            y = item.datapoint[1].toFixed(2);
+                        showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1]);
+                    }
+                }
+            });
+            $('#' + chartId).bind("mouseleave", function () {
+                $("#tooltip").remove();
+            });
+        }
+    }
 
     var DopChart = function () {
 
@@ -35,50 +144,10 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
             initCharts: function (Data) {
 
                 $scope.satelliteData = {
-                    compassSatellite: Data[2],
-                    gpsSatellite: Data[5],
-                    glsSatellite: Data[7]
+                    compassSatellite: 19,
+                    gpsSatellite: 20,
+                    glsSatellite: 32
                 };
-
-                if (!jQuery.plot) {
-                    return;
-                }
-
-                function showChartTooltip(x, y, xValue, yValue) {
-                    $('<div id="tooltip" class="chart-tooltip">' + yValue + '<\/div>').css({
-                        position: 'absolute',
-                        display: 'none',
-                        top: y - 40,
-                        left: x - 40,
-                        border: '0px solid #ccc',
-                        padding: '2px 6px',
-                        'background-color': '#fff'
-                    }).appendTo("body").fadeIn(200);
-                }
-
-                var data = [];
-                var totalPoints = 250;
-
-
-                function getRandomData() {
-                    if (data.length > 0) data = data.slice(1);
-                    // do a random walk
-                    while (data.length < totalPoints) {
-                        var prev = data.length > 0 ? data[data.length - 1] : 50;
-                        var y = prev + Math.random() * 10 - 5;
-                        if (y < 0) y = 0;
-                        if (y > 100) y = 100;
-                        data.push(y);
-                    }
-                    // zip the generated y values with the x values
-                    var res = [];
-                    for (var i = 0; i < data.length; ++i) res.push([i, data[i]])
-                    return res;
-                }
-
-                //function randValue() {
-                //    return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
-                //}
 
                 var visitors = [
                     ['02/2013', Data[0]],
@@ -91,252 +160,37 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                     ['09/2013', Data[7]],
                     ['10/2013', Data[1]]
                 ];
+                lineChart("site_activities", visitors, "#9ACAE6");
+                lineChart("site_statistics", visitors, "#f20707");
+                lineChart("chartPositionPrecision", visitors, "#f4ee42");
+                lineChart("absoluteError", visitors, "#68f442");
+                lineChart("protectionLevel", visitors, "#68f442");
+                lineChart("utcContinuity", visitors, "#8342f4");
+                lineChart("chartPositionPrecision", visitors, "#f44292");
 
 
-                if ($('#site_statistics').size() != 0) {
 
-                    $('#site_statistics_loading').hide();
-                    $('#site_statistics_content').show();
-
-                    var plot_statistics = $.plot($("#site_statistics"), [{
-                            data: visitors,
-                            lines: {
-                                fill: 0.6,
-                                lineWidth: 0
-                            },
-                            color: ['#f89f9f']
-                        }, {
-                            data: visitors,
-                            points: {
-                                show: true,
-                                fill: true,
-                                radius: 5,
-                                fillColor: "#f89f9f",
-                                lineWidth: 3
-                            },
-                            color: '#fff',
-                            shadowSize: 0
-                        }],
-
-                        {
-                            xaxis: {
-                                tickLength: 0,
-                                tickDecimals: 0,
-                                mode: "categories",
-                                min: 0,
-                                font: {
-                                    lineHeight: 14,
-                                    style: "normal",
-                                    variant: "small-caps",
-                                    color: "#6F7B8A"
-                                }
-                            },
-                            yaxis: {
-                                ticks: 5,
-                                tickDecimals: 0,
-                                tickColor: "#eee",
-                                font: {
-                                    lineHeight: 14,
-                                    style: "normal",
-                                    variant: "small-caps",
-                                    color: "#6F7B8A"
-                                }
-                            },
-                            grid: {
-                                hoverable: true,
-                                clickable: true,
-                                tickColor: "#eee",
-                                borderColor: "#eee",
-                                borderWidth: 1
-                            }
-                        });
-
-                    var previousPoint = null;
-                    $("#site_statistics").bind("plothover", function (event, pos, item) {
-                        $("#x").text(pos.x.toFixed(2));
-                        $("#y").text(pos.y.toFixed(2));
-                        if (item) {
-                            if (previousPoint != item.dataIndex) {
-                                previousPoint = item.dataIndex;
-
-                                $("#tooltip").remove();
-                                var x = item.datapoint[0].toFixed(2),
-                                    y = item.datapoint[1].toFixed(2);
-
-                                showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + ' visits');
-                            }
-                        } else {
-                            $("#tooltip").remove();
-                            previousPoint = null;
-                        }
-                    });
-                }
-
-
-                if ($('#site_activities').size() != 0) {
-                    //site activities
-                    var previousPoint2 = null;
-                    $('#site_activities_loading').hide();
-                    $('#site_activities_content').show();
-
-                    var data1 = [
-                        ['DEC', Data[0]],
-                        ['JAN', Data[1]],
-                        ['FEB', Data[2]],
-                        ['MAR', Data[3]],
-                        ['APR', Data[4]],
-                        ['MAY', Data[5]],
-                        ['JUN', Data[6]],
-                        ['JUL', Data[7]],
-                        ['AUG', Data[8]],
-                        ['SEP', Data[9]]
-                    ];
-
-
-                    var plot_statistics = $.plot($("#site_activities"),
-
-                        [{
-                            data: data1,
-                            lines: {
-                                fill: 0.2,
-                                lineWidth: 0,
-                            },
-                            color: ['#BAD9F5']
-                        }, {
-                            data: data1,
-                            points: {
-                                show: true,
-                                fill: true,
-                                radius: 4,
-                                fillColor: "#9ACAE6",
-                                lineWidth: 2
-                            },
-                            color: '#9ACAE6',
-                            shadowSize: 1
-                        }, {
-                            data: data1,
-                            lines: {
-                                show: true,
-                                fill: false,
-                                lineWidth: 3
-                            },
-                            color: '#9ACAE6',
-                            shadowSize: 0
-                        }],
-
-                        {
-
-                            xaxis: {
-                                tickLength: 0,
-                                tickDecimals: 0,
-                                mode: "categories",
-                                min: 0,
-                                font: {
-                                    lineHeight: 18,
-                                    style: "normal",
-                                    variant: "small-caps",
-                                    color: "#6F7B8A"
-                                }
-                            },
-                            yaxis: {
-                                ticks: 5,
-                                tickDecimals: 0,
-                                tickColor: "#eee",
-                                font: {
-                                    lineHeight: 14,
-                                    style: "normal",
-                                    variant: "small-caps",
-                                    color: "#6F7B8A"
-                                }
-                            },
-                            grid: {
-                                hoverable: true,
-                                clickable: true,
-                                tickColor: "#eee",
-                                borderColor: "#eee",
-                                borderWidth: 1
-                            }
-                        });
-
-                    $("#site_activities").bind("plothover", function (event, pos, item) {
-                        $("#x").text(pos.x.toFixed(2));
-                        $("#y").text(pos.y.toFixed(2));
-                        if (item) {
-                            if (previousPoint2 != item.dataIndex) {
-                                previousPoint2 = item.dataIndex;
-                                $("#tooltip").remove();
-                                var x = item.datapoint[0].toFixed(2),
-                                    y = item.datapoint[1].toFixed(2);
-                                showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + 'M$');
-                            }
-                        }
-                    });
-
-                    $('#site_activities').bind("mouseleave", function () {
-                        $("#tooltip").remove();
-                    });
-                }
             }
         };
 
     }();
+    var startData = [
+        [180, 6],
+        [195, 3],
+        [210, 6],
+        [225, 6],
+        [240, 6],
+        [255, 5],
+        [270, 4],
+        [285, 10],
+        [300, 4],
+        [315, 8]
+    ];
 
+    starMap(startData)
 
-    anychart.onDocumentReady(function() {
-        var dataSet = anychart.data.set([
-            [180, 6],
-            [195, 3],
-            [210, 6],
-            [225, 6],
-            [240, 6],
-            [255, 5],
-            [270, 4],
-            [285, 10],
-            [300, 4],
-            [315, 8],
-            [330, 5],
-            [345, 6],
-            [360, 3]
-        ]);
+    $interval(showTime, 1000)
 
-        // map data for the first series, take x from the zero column and value from the first column of data set
-        var seriesData_1 = dataSet.mapAs({x: [0], value: [1]});
-
-        chart = anychart.polar();
-
-        // set container id for the chart
-        chart.container('starMap');
-
-        // set chart yScale settings
-        chart.yScale().minimum(0).maximum(16);
-        chart.yScale().ticks().interval(2);
-
-        // set chart xScale settings
-        chart.xScale().maximum(360);
-        chart.xScale().ticks().interval(30);
-
-        // set xAxis formatting settings
-        chart.xAxis().labels().textFormatter(function() {
-            return this['value'] + '°'
-        });
-
-        // disable chart title
-        chart.title(false);
-
-        // set chart legend settings
-        chart.legend()
-            .align('center')
-            .enabled(true);
-
-        var series1 = chart.marker(seriesData_1);
-        series1.type('star5');
-        series1.name('Signal A');
-        chart.draw();
-    });
-
-
-// set sidebar closed and body solid layout mode
-    $rootScope.settings.layout.pageContentWhite = true;
-    $rootScope.settings.layout.pageBodySolid = false;
-    $rootScope.settings.layout.pageSidebarClosed = false;
 });
+
+
