@@ -81,11 +81,8 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
 
         var socket = io.connect('http://192.168.1.30:3000');
         socket.on('new', function (data) {
-            console.log('-------------------------------')
             $scope.$emit('to-parent', data);
         });
-
-        //var data = [21,34,52,43,34,23,45,60,27,52,41,36];
 
     }
 }]);

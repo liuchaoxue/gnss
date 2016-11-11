@@ -7,28 +7,58 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
 
     var socket = io.connect('http://192.168.1.30:3000');
     socket.on('new', function (data) {
-        add_data(data);
+        DopChart.initCharts(data);
     });
 
 
     $scope.$on('to-child', function (event, data) {
-
+        DopChart.initCharts(data);
     });
+
+    function showTime() {
+        var date = new Date();
+        var now = "";
+        if (date.getHours() < 10) now = "0"
+        now = now + date.getHours() + ":";
+        if (date.getMinutes() < 10) now = now + "0"
+        now = now + date.getMinutes();
+        $scope.nowTime = now
+    }
+
+    $interval(showTime, 1000)
+
 
     var DopChart = function () {
 
         return {
 
-            initCharts: function () {
+            initCharts: function (Data) {
+
+                $scope.satelliteData = {
+                    compassSatellite: Data[2],
+                    gpsSatellite: Data[5],
+                    glsSatellite: Data[7]
+                };
+
                 if (!jQuery.plot) {
                     return;
                 }
 
+                function showChartTooltip(x, y, xValue, yValue) {
+                    $('<div id="tooltip" class="chart-tooltip">' + yValue + '<\/div>').css({
+                        position: 'absolute',
+                        display: 'none',
+                        top: y - 40,
+                        left: x - 40,
+                        border: '0px solid #ccc',
+                        padding: '2px 6px',
+                        'background-color': '#fff'
+                    }).appendTo("body").fadeIn(200);
+                }
 
                 var data = [];
                 var totalPoints = 250;
 
-                // random data generator for plot charts
 
                 function getRandomData() {
                     if (data.length > 0) data = data.slice(1);
@@ -46,20 +76,20 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                     return res;
                 }
 
-                function randValue() {
-                    return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
-                }
+                //function randValue() {
+                //    return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
+                //}
 
                 var visitors = [
-                    ['02/2013', 1500],
-                    ['03/2013', 2500],
-                    ['04/2013', 1700],
-                    ['05/2013', 800],
-                    ['06/2013', 1500],
-                    ['07/2013', 2350],
-                    ['08/2013', 1500],
-                    ['09/2013', 1300],
-                    ['10/2013', 4600]
+                    ['02/2013', Data[0]],
+                    ['03/2013', Data[9]],
+                    ['04/2013', Data[6]],
+                    ['05/2013', Data[5]],
+                    ['06/2013', Data[4]],
+                    ['07/2013', Data[3]],
+                    ['08/2013', Data[2]],
+                    ['09/2013', Data[7]],
+                    ['10/2013', Data[1]]
                 ];
 
 
@@ -150,16 +180,16 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                     $('#site_activities_content').show();
 
                     var data1 = [
-                        ['DEC', 300],
-                        ['JAN', 600],
-                        ['FEB', 1100],
-                        ['MAR', 1200],
-                        ['APR', 860],
-                        ['MAY', 1200],
-                        ['JUN', 1450],
-                        ['JUL', 1800],
-                        ['AUG', 1200],
-                        ['SEP', 600]
+                        ['DEC', Data[0]],
+                        ['JAN', Data[1]],
+                        ['FEB', Data[2]],
+                        ['MAR', Data[3]],
+                        ['APR', Data[4]],
+                        ['MAY', Data[5]],
+                        ['JUN', Data[6]],
+                        ['JUL', Data[7]],
+                        ['AUG', Data[8]],
+                        ['SEP', Data[9]]
                     ];
 
 
@@ -246,15 +276,10 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                         $("#tooltip").remove();
                     });
                 }
-            },
-
-            init: function () {
-                this.initCharts();
             }
         };
 
     }();
-    DopChart.init(); // init metronic core componets
 
 
 // set sidebar closed and body solid layout mode
