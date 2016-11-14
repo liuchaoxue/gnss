@@ -1,5 +1,4 @@
 <h1 class="page-title"> 北斗卫星 数据面板 </h1>
-<p ng-bind="shishi"></p>
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
@@ -85,7 +84,6 @@
                         <div class="caption">
                             <i class="icon-share font-red-sunglo hide"></i>
                             <span class="caption-subject font-dark bold uppercase">DOP值</span>
-                            <span class="caption-helper">这是什么...</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -191,8 +189,8 @@
                 <div class="portlet light ">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="icon-bar-chart font-green-haze"></i>
-                            <span class="caption-subject bold uppercase font-green-haze">星空图</span>
+                            <i class="icon-settings font-dark"></i>
+                            <span class="caption-subject font-dark sbold uppercase">星空图</span>
                         </div>
                     </div>
                     <div id="starMap_loading">
@@ -202,6 +200,22 @@
                 <!-- END CHART PORTLET-->
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light portlet-fit ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class=" icon-layers font-green"></i>
+                            <span class="caption-subject font-green bold uppercase">Line Chart 1</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="highchart_1" style="height:500px;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
