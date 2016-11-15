@@ -84,12 +84,12 @@ MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader();
     });
-
-    $scope.base_station = localStorage.getItem('base_station');
-    $scope.signal_type = localStorage.getItem('signal_type');
-
-    $scope.change_base_station = function (name) {
-        localStorage.setItem('base_station', name)
+    if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
+        $scope.base_station = localStorage.getItem('base_station');
+        $scope.signal_type = localStorage.getItem('signal_type');
+    }
+    $scope.change_base_station = function (name){
+        localStorage.setItem('base_station',name)
         $scope.base_station = name;
         $scope.$emit('to-parent', name);
     }
@@ -148,6 +148,24 @@ MetronicApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', fun
 
                             'assets/pages/scripts/dashboard.min.js',
                             'js/controllers/dashboardController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+
+        .state('blank', {
+            url: "/blank",
+            templateUrl: "views/blank.html",
+            data: {pageTitle: 'Blank Page Template'},
+            controller: "BlankController",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/BlankController.js'
                         ]
                     });
                 }]
