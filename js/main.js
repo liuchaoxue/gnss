@@ -39,7 +39,7 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope
         $scope.$broadcast('to-child', data);
     });
 
-    $scope.$on('lagout-to-parent',function(event,data) {
+    $scope.$on('logout-to-parent',function(event,data) {
        juadge_login();
     });
 
@@ -76,25 +76,19 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
     $scope.signal_type = localStorage.getItem('signal_type');
 
     $scope.change_base_station = function (name){
-        var base_station = document.getElementsByName(name);
-        localStorage.setItem('base_station',base_station[0].lastChild.data)
-        $scope.base_station = base_station[0].lastChild.data;
-
-        var socket = io.connect('http://192.168.1.30:3000');
-        socket.on('new', function (data) {
-            $scope.$emit('to-parent', data);
-        });
+        localStorage.setItem('base_station',name)
+        $scope.base_station = name;
+        $scope.$emit('to-parent', name);
     }
 
     $scope.change_signal_type = function (name) {
-        var signal_type = document.getElementsByName(name);
-        localStorage.setItem('signal_type',signal_type[0].lastChild.data)
-        $scope.signal_type = signal_type[0].lastChild.data;
+        localStorage.setItem('signal_type',name)
+        $scope.signal_type = name;
     }
 
     $scope.logout_gnss = function() {
         localStorage.removeItem('base_station');
-        $scope.$emit('lagout-to-parent','data');
+        $scope.$emit('logout-to-parent','data');
     }
 }]);
 
