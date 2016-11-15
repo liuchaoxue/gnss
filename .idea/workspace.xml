@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45962cd8-97a4-480c-8eed-5997e2d88a74" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/controllers/BlankController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/blank.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dashboard.html" afterPath="$PROJECT_DIR$/views/dashboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/dashboardController.js" afterPath="$PROJECT_DIR$/js/controllers/dashboardController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tpl/sidebar.html" afterPath="$PROJECT_DIR$/tpl/sidebar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gnss.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.541713">
+            <state vertical-scroll-proportion="-79.8">
               <caret line="150" column="59" selection-start-line="150" selection-start-column="49" selection-end-line="150" selection-end-column="59" />
               <folding />
             </state>
@@ -37,10 +43,8 @@
         <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="235" column="13" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="13" />
-              <folding>
-                <element signature="e#7137#7147#0" expanded="false" />
-              </folding>
+              <caret line="236" column="19" selection-start-line="236" selection-start-column="19" selection-end-line="236" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,8 +52,8 @@
       <file leaf-file-name="dashboard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-148.4">
-              <caret line="212" column="26" selection-start-line="212" selection-start-column="26" selection-end-line="212" selection-end-column="26" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -61,8 +65,18 @@
       <file leaf-file-name="sidebar.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tpl/sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.1">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blank.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/blank.html">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+              <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -82,7 +96,17 @@
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="41" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="41" />
+              <caret line="114" column="25" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlankController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/controllers/BlankController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,17 +129,18 @@
       <list>
         <option value="$PROJECT_DIR$/tpl/footer.html" />
         <option value="$PROJECT_DIR$/assets/pages/css/login.min.css" />
-        <option value="$PROJECT_DIR$/tpl/sidebar.html" />
         <option value="$PROJECT_DIR$/assets/pages/scripts/login.js" />
-        <option value="$PROJECT_DIR$/views/dashboard.html" />
         <option value="$PROJECT_DIR$/assets/global/plugins/highcharts/js/highcharts.js" />
         <option value="$PROJECT_DIR$/assets/global/plugins/highcharts/js/highcharts.src.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/global/plugins/flot/jquery.flot.min.js" />
         <option value="$PROJECT_DIR$/tpl/header.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
         <option value="$PROJECT_DIR$/ss.css" />
+        <option value="$PROJECT_DIR$/views/dashboard.html" />
+        <option value="$PROJECT_DIR$/js/controllers/dashboardController.js" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/tpl/sidebar.html" />
+        <option value="$PROJECT_DIR$/views/blank.html" />
       </list>
     </option>
   </component>
@@ -241,11 +266,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/下载/test1" />
+    <property name="last_opened_file_path" value="$USER_HOME$/weixing" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.JavaScript" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js/controllers" />
+      <recent name="$PROJECT_DIR$/views" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -349,9 +380,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7137#7147#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -409,9 +438,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#7137#7147#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -507,14 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/sidebar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/pages/scripts/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.387096">
@@ -540,17 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.774193">
           <caret line="7444" column="41" selection-start-line="7444" selection-start-column="40" selection-end-line="7444" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-148.4">
-          <caret line="212" column="26" selection-start-line="212" selection-start-column="26" selection-end-line="212" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -583,32 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.9">
-          <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="235" column="13" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="13" />
-          <folding>
-            <element signature="e#7137#7147#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="41" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/global/plugins/highcharts/js/highcharts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33296213">
@@ -629,8 +611,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.541713">
+        <state vertical-scroll-proportion="-79.8">
           <caret line="150" column="59" selection-start-line="150" selection-start-column="49" selection-end-line="150" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/dashboardController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="236" column="19" selection-start-line="236" selection-start-column="19" selection-end-line="236" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/BlankController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.9">
+          <caret line="17" column="80" selection-start-line="17" selection-start-column="80" selection-end-line="17" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="114" column="25" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/blank.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
           <folding />
         </state>
       </provider>

@@ -23,10 +23,12 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
     //});
 
     function update_chart_data() {
-        var bs = localStorage.getItem('base_station');
-        var st = localStorage.getItem('signal_type');
-        if(bs != '基站' && st != '信号类型') {
-            DopChart.initCharts(data[bs][st]);
+        if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
+            var bs = localStorage.getItem('base_station');
+            var st = localStorage.getItem('signal_type');
+            if (bs != '基站' && st != '信号类型') {
+                DopChart.initCharts(data[bs][st]);
+            }
         }
     }
 
@@ -198,6 +200,12 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
     update_chart_data();
 
 
+    function reverseString(str) {
+        return str.split("").reverse().join("");
+    }
+
+
+
     var startData = [
         [180, 6],
         [195, 3],
@@ -221,21 +229,21 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                 fontFamily: 'Open Sans'
             }
         },
-        //title: {
-        //    text: 'Monthly Average Temperature',
-        //    x: -20 //center
-        //},
-        //subtitle: {
-        //    text: 'Source: WorldClimate.com',
-        //    x: -20
-        //},
+        title: {
+            text: '',
+            x: -20
+        },
+        subtitle: {
+            text: '',
+            x: -20
+        },
         xAxis: {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         },
         yAxis: {
             title: {
-                text: 'template'
+                text: reverseString("卫星数量")
             },
             plotLines: [{
                 value: 0,
