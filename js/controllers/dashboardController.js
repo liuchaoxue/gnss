@@ -15,7 +15,9 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
 
 
     $scope.$on('to-child', function(event,type) {
-        console.log(data[type])
+        var aaa = localStorage.getItem('base_station');
+        var bbb = localStorage.getItem('signal_type');
+        DopChart.initCharts(data[aaa][bbb]);
     });
     //var socket = io.connect('http://192.168.1.30:3000');
     //socket.on('new', function (data) {
@@ -187,7 +189,9 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
 
     }();
 
-    DopChart.initCharts(data);
+    var aaa = localStorage.getItem('base_station');
+    var bbb = localStorage.getItem('signal_type');
+    DopChart.initCharts(data[aaa][bbb]);
 
     var startData = [
         [180, 6],

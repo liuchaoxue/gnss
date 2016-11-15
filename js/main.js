@@ -84,6 +84,7 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
     $scope.change_signal_type = function (name) {
         localStorage.setItem('signal_type',name)
         $scope.signal_type = name;
+        $scope.$emit('to-parent', name);
     }
 
     $scope.logout_gnss = function() {
