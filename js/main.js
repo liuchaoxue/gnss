@@ -1,22 +1,20 @@
-
-
 var MetronicApp = angular.module("MetronicApp", [
-    "ui.router", 
-    "ui.bootstrap", 
-    "oc.lazyLoad",  
+    "ui.router",
+    "ui.bootstrap",
+    "oc.lazyLoad",
     "ngSanitize"
-]); 
+]);
 
-MetronicApp.config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
+MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({});
 }]);
 
-MetronicApp.config(['$controllerProvider', function($controllerProvider) {
-  $controllerProvider.allowGlobals();
+MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
+    $controllerProvider.allowGlobals();
 }]);
 
 
-MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
+MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
     var settings = {
         layout: {
             pageSidebarClosed: false,
@@ -34,41 +32,56 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
     return settings;
 }]);
 
-MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope, $rootScope) {
-    $scope.$on('to-parent', function(event,data) {
+MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+    $scope.$on('to-parent', function (event, data) {
         $scope.$broadcast('to-child', data);
     });
 
-    $scope.$on('logout-to-parent',function(event,data) {
-       juadge_login();
+    $scope.$on('logout-to-parent', function (event, data) {
+        juadge_login();
     });
 
-    $("body").keydown(function() {
+    $("body").keydown(function () {
         if (event.keyCode == "13") {
             $('#login_btn').click();
         }
     });
 
-    $scope.login_gnss = function () {
-        localStorage.setItem('base_station','基站');
-        localStorage.setItem('signal_type','信号类型');
+    $scope.login_gnss = function (data) {
+        $http.post("http://192.168.1.30:3000/", {
+            username: $scope.userName,
+            password: $scope.passWord
+        },{
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+        ).success(function (req) {
+                console.log("success")
+                console.log(req)
+            }).error(function (req) {
+                console.log("Err")
+                console.log(req)
+            })
+
     }
 
     function juadge_login() {
         if (localStorage.getItem('base_station')) {
             $scope.login_hide = false;
             $scope.login_show = true;
-        }else {
+        } else {
             $scope.login_hide = true;
             $scope.login_show = false;
         }
     }
+
     juadge_login();
 }]);
 
 
-MetronicApp.controller('HeaderController', ['$scope', function($scope) {
-    $scope.$on('$includeContentLoaded', function() {
+MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
+    $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader();
     });
     if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
@@ -82,43 +95,48 @@ MetronicApp.controller('HeaderController', ['$scope', function($scope) {
     }
 
     $scope.change_signal_type = function (name) {
-        localStorage.setItem('signal_type',name)
+        localStorage.setItem('signal_type', name)
         $scope.signal_type = name;
         $scope.$emit('to-parent', name);
     }
 
-    $scope.logout_gnss = function() {
+    $scope.logout_gnss = function () {
         localStorage.removeItem('base_station');
-        $scope.$emit('logout-to-parent','data');
+        $scope.$emit('logout-to-parent', 'data');
     }
 }]);
 
-MetronicApp.controller('SidebarController', ['$state', '$scope', function($state, $scope) {
+MetronicApp.controller('SidebarController', ['$state', '$scope', function ($state, $scope) {
 
-    $scope.$on('$includeContentLoaded', function() {
+    $scope.$on('$includeContentLoaded', function () {
         Layout.initSidebar($state);
     });
 }]);
 
 
-MetronicApp.controller('FooterController', ['$scope', function($scope) {
-    $scope.$on('$includeContentLoaded', function() {
+MetronicApp.controller('FooterController', ['$scope', function ($scope) {
+    $scope.$on('$includeContentLoaded', function () {
         Layout.initFooter();
     });
 }]);
 
-MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+MetronicApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', function ($stateProvider, $httpProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/dashboard.html");
+
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
 
     $stateProvider
 
         .state('dashboard', {
             url: "/dashboard.html",
-            templateUrl: "views/dashboard.html",            
+            templateUrl: "views/dashboard.html",
             data: {pageTitle: 'Admin Dashboard Template'},
             controller: "dashboardController",
             resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
@@ -130,7 +148,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 
                             'assets/pages/scripts/dashboard.min.js',
                             'js/controllers/dashboardController.js',
-                        ] 
+                        ]
                     });
                 }]
             }
@@ -157,7 +175,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 
 }]);
 
-MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
+MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state;
     $rootScope.$settings = settings;
 }]);
