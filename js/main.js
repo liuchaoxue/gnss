@@ -48,21 +48,16 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', functi
     });
 
     $scope.login_gnss = function (data) {
-        $http.post("http://192.168.1.30:3000/", {
-            username: $scope.userName,
-            password: $scope.passWord
-        },{
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+        $http.post("http://192.168.1.30:3000/?username=" + $scope.userName + "&password=" + $scope.passWord, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
-        ).success(function (req) {
-                console.log("success")
-                console.log(req)
-            }).error(function (req) {
-                console.log("Err")
-                console.log(req)
-            })
+        }).success(function (req) {
+            console.log("success")
+            localStorage.setItem("userId",req._id)
+        }).error(function (req) {
+            alert("账号或密码错误")
+        })
 
     }
 
@@ -84,12 +79,12 @@ MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader();
     });
-    if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
+    if (localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
         $scope.base_station = localStorage.getItem('base_station');
         $scope.signal_type = localStorage.getItem('signal_type');
     }
-    $scope.change_base_station = function (name){
-        localStorage.setItem('base_station',name)
+    $scope.change_base_station = function (name) {
+        localStorage.setItem('base_station', name)
         $scope.base_station = name;
         $scope.$emit('to-parent', name);
     }
@@ -160,7 +155,7 @@ MetronicApp.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', fun
             data: {pageTitle: 'Blank Page Template'},
             controller: "BlankController",
             resolve: {
-                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
