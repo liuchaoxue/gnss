@@ -1,26 +1,26 @@
 angular.module('MetronicApp').controller('dashboardController', function ($interval, $rootScope, $scope) {
 
-    var data = {
-        "北京":{
-            'GPS':[24,23,43,23,23,23,23,23,64,57,23,23],
-            'BDS':[29,23,63,23,23,63,23,23,64,57,43,23],
-            'GLO':[24,23,43,23,23,23,53,23,64,57,23,23]
-        },
-        "上海":{
-            'GPS':[24,23,43,23,23,43,43,23,64,57,23,23],
-            'BDS':[24,23,43,23,23,53,23,23,64,57,23,23],
-            'GLO':[24,23,43,33,23,23,23,23,64,57,23,33]
-        }
-    };
+    //var data = {
+    //    "北京":{
+    //        'GPS':[24,23,43,23,23,23,23,23,64,57,23,23],
+    //        'BDS':[29,23,63,23,23,63,23,23,64,57,43,23],
+    //        'GLO':[24,23,43,23,23,23,53,23,64,57,23,23]
+    //    },
+    //    "上海":{
+    //        'GPS':[24,23,43,23,23,43,43,23,64,57,23,23],
+    //        'BDS':[24,23,43,23,23,53,23,23,64,57,23,23],
+    //        'GLO':[24,23,43,33,23,23,23,23,64,57,23,33]
+    //    }
+    //};
 
 
     $scope.$on('to-child', function(event,type) {
         update_chart_data();
     });
-    //var socket = io.connect('http://192.168.1.30:3000');
-    //socket.on('new', function (data) {
-    //    DopChart.initCharts(data);
-    //});
+    var socket = io.connect('http://192.168.1.30:3000');
+    socket.on('new', function (data) {
+        DopChart.initCharts(data);
+    });
 
     function update_chart_data() {
         if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {

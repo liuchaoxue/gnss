@@ -49,11 +49,16 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', '$cook
     });
 
     $scope.login_gnss = function () {
-        $http.post("http://192.168.1.30:3000/login?username=1&password=1", {productId: 3}, {
+        $http.post("http://192.168.1.30:3000/login?username=" + $scope.userName + "&password=" + $scope.passWord, {}, {
             withCredentials: true,
         }).success(function (data) {
-            $cookieStore.put("connect.sid", data["connect.sid"])
-            console.log(data)
+            if (data["connect.sid"]) {
+                $cookieStore.put("connect.sid", data["connect.sid"])
+                $scope.login_hide = false;
+                $scope.login_show = true;
+            }
+        }).error(function (req) {
+            alert('账号或密码错误')
         });
 
     }
@@ -61,7 +66,7 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', '$cook
     //$scope.login_show = false;
 
     function juadge_login() {
-        $http.get("http://192.168.1.30:3000/users",{withCredentials: true}).success(function (req) {
+        $http.get("http://192.168.1.30:3000/users", {withCredentials: true}).success(function (req) {
             if (req == true) {
                 $scope.login_hide = false;
                 $scope.login_show = true;
