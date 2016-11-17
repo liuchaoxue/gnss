@@ -52,31 +52,31 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', '$cook
         $http.post("http://192.168.1.30:3000/login?username=" + $scope.userName + "&password=" + $scope.passWord, {}, {
             withCredentials: true,
         }).success(function (data) {
+            console.log(data["connect.sid"])
             if (data["connect.sid"]) {
                 $cookieStore.put("connect.sid", data["connect.sid"])
-                $scope.login_hide = false;
-                $scope.login_show = true;
+                isShowLogin(false,true)
             }
         }).error(function (req) {
             alert('账号或密码错误')
         });
 
     }
-    //$scope.login_hide = true;
-    //$scope.login_show = false;
+    function isShowLogin(login,index){
+        $scope.indexPage = index;
+        $scope.loginPage = login;
+    }
 
     function juadge_login() {
         $http.get("http://192.168.1.30:3000/users", {withCredentials: true}).success(function (req) {
             if (req == true) {
-                $scope.login_hide = false;
-                $scope.login_show = true;
+                isShowLogin(false,true)
             } else {
-                $scope.login_hide = true;
-                $scope.login_show = false;
+                isShowLogin(true,false)
             }
 
         }).error(function (req) {
-            alert('请检查网络')
+            isShowLogin(true,false)
         })
     }
 
