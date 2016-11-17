@@ -39,7 +39,7 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', '$cook
     });
 
     $scope.$on('logout-to-parent', function (event, data) {
-        juadge_login();
+        checkLogin();
     });
 
     $("body").keydown(function () {
@@ -55,36 +55,36 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', '$cook
             console.log(data["connect.sid"])
             if (data["connect.sid"]) {
                 $cookieStore.put("connect.sid", data["connect.sid"])
-                isShowLogin(false,true)
+                isShowLogin(false, true)
             }
         }).error(function (req) {
             alert('账号或密码错误')
         });
 
     }
-    function isShowLogin(login,index){
+    function isShowLogin(login, index) {
         $scope.indexPage = index;
         $scope.loginPage = login;
     }
 
-    function juadge_login() {
+    function checkLogin() {
         $http.get("http://192.168.1.30:3000/users", {withCredentials: true}).success(function (req) {
             if (req == true) {
-                isShowLogin(false,true)
+                isShowLogin(false, true)
             } else {
-                isShowLogin(true,false)
+                isShowLogin(true, false)
             }
 
         }).error(function (req) {
-            isShowLogin(true,false)
+            isShowLogin(true, false)
         })
     }
 
-    juadge_login()
+    checkLogin()
 }]);
 
 
-MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
+MetronicApp.controller('HeaderController', ['$scope', '$http', function ($scope, $http) {
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader();
     });
@@ -105,8 +105,12 @@ MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
     }
 
     $scope.logout_gnss = function () {
-        localStorage.removeItem('base_station');
-        $scope.$emit('logout-to-parent', 'data');
+        $http.get("http://192.168.1.30:3000/logout", {withCredentials: true}).success(function (req) {
+            $scope.$emit('logout-to-parent', 'data');
+        }).error(function (req) {
+            isShowLogin(true, false)
+        })
+
     }
 }]);
 
