@@ -2,7 +2,8 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.router",
     "ui.bootstrap",
     "oc.lazyLoad",
-    "ngSanitize"
+    "ngSanitize",
+    'ngCookies'
 ]);
 
 MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
@@ -32,7 +33,7 @@ MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
     return settings;
 }]);
 
-MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
+MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', '$cookieStore', function ($scope, $http, $rootScope, $cookieStore) {
     $scope.$on('to-parent', function (event, data) {
         $scope.$broadcast('to-child', data);
     });
@@ -47,31 +48,34 @@ MetronicApp.controller('AppController', ['$scope', '$http', '$rootScope', functi
         }
     });
 
-    $scope.login_gnss = function (data) {
-        $http.post("http://192.168.1.30:3000/?username=" + $scope.userName + "&password=" + $scope.passWord, {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (req) {
-            console.log("success")
-            localStorage.setItem("userId",req._id)
-        }).error(function (req) {
-            alert("账号或密码错误")
-        })
+    $scope.login_gnss = function () {
+        $http.post("http://192.168.1.30:3000/login?username=1&password=1", {productId: 3}, {
+            withCredentials: true,
+        }).success(function (data) {
+            $cookieStore.put("connect.sid", data["connect.sid"])
+            console.log(data)
+        });
 
     }
+    //$scope.login_hide = true;
+    //$scope.login_show = false;
 
     function juadge_login() {
-        if (localStorage.getItem('base_station')) {
-            $scope.login_hide = false;
-            $scope.login_show = true;
-        } else {
-            $scope.login_hide = true;
-            $scope.login_show = false;
-        }
+        $http.get("http://192.168.1.30:3000/users",{withCredentials: true}).success(function (req) {
+            if (req == true) {
+                $scope.login_hide = false;
+                $scope.login_show = true;
+            } else {
+                $scope.login_hide = true;
+                $scope.login_show = false;
+            }
+
+        }).error(function (req) {
+            alert('请检查网络')
+        })
     }
 
-    juadge_login();
+    juadge_login()
 }]);
 
 
@@ -174,3 +178,4 @@ MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, setti
     $rootScope.$state = $state;
     $rootScope.$settings = settings;
 }]);
+
