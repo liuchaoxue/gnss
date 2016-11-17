@@ -15,22 +15,22 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
 
 
     $scope.$on('to-child', function(event,type) {
-        update_chart_data();
+        //update_chart_data();
     });
     var socket = io.connect('http://192.168.1.30:3000');
     socket.on('new', function (data) {
         DopChart.initCharts(data);
     });
 
-    function update_chart_data() {
-        if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
-            var bs = localStorage.getItem('base_station');
-            var st = localStorage.getItem('signal_type');
-            if (bs != '基站' && st != '信号类型') {
-                DopChart.initCharts(data[bs][st]);
-            }
-        }
-    }
+    //function update_chart_data() {
+    //    if(localStorage.getItem('base_station') && localStorage.getItem('signal_type')) {
+    //        var bs = localStorage.getItem('base_station');
+    //        var st = localStorage.getItem('signal_type');
+    //        if (bs != '基站' && st != '信号类型') {
+    //            DopChart.initCharts(data[bs][st]);
+    //        }
+    //    }
+    //}
 
     function showTime() {
         var date = new Date();
@@ -141,23 +141,28 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
                     }
                 });
 
-            $("#" + chartId).bind("plothover", function (event, pos, item) {
-                $("#x").text(pos.x.toFixed(2));
-                $("#y").text(pos.y.toFixed(2));
-                if (item) {
-                    if (previousPoint2 != item.dataIndex) {
-                        previousPoint2 = item.dataIndex;
-                        $("#tooltip").remove();
-                        var x = item.datapoint[0].toFixed(2),
-                            y = item.datapoint[1].toFixed(2);
-                        showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1]);
-                    }
-                }
-            });
-            $('#' + chartId).bind("mouseleave", function () {
-                $("#tooltip").remove();
-            });
+            appendChart(chartId)
         }
+    }
+
+    function appendChart(chartId){
+
+        $("#" + chartId).bind("plothover", function (event, pos, item) {
+            $("#x").text(pos.x.toFixed(2));
+            $("#y").text(pos.y.toFixed(2));
+            if (item) {
+                if (previousPoint2 != item.dataIndex) {
+                    previousPoint2 = item.dataIndex;
+                    $("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(2),
+                        y = item.datapoint[1].toFixed(2);
+                    showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1]);
+                }
+            }
+        });
+        $('#' + chartId).bind("mouseleave", function () {
+            $("#tooltip").remove();
+        });
     }
 
     var DopChart = function () {
@@ -192,7 +197,7 @@ angular.module('MetronicApp').controller('dashboardController', function ($inter
 
     }();
 
-    update_chart_data();
+    //update_chart_data();
 
 
     function reverseString(str) {
